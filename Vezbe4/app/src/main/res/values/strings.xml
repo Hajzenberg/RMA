@@ -1,0 +1,5 @@
+<resources>
+    <string name="app_name">Vezbe4</string>
+    <string name="main_activity_message">Main Activity</string>
+    <string name="second_activity_message">Second Activity</string>
+</resources>
