@@ -1,0 +1,5 @@
+<resources>
+    <string name="app_name">Vezbe5</string>
+    <string name="header">Header</string>
+    <string name="footer">Footer</string>
+</resources>
