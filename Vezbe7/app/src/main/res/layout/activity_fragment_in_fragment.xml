@@ -2,5 +2,4 @@
 <androidx.fragment.app.FragmentContainerView xmlns:android="http://schemas.android.com/apk/res/android"
     android:id="@+id/fragmentInFragmentFcv"
     android:layout_width="match_parent"
-    android:layout_height="match_parent"
-    android:name="rs.raf.vezbe7.view.fragments.FirstFragment"/>
+    android:layout_height="match_parent"/>
