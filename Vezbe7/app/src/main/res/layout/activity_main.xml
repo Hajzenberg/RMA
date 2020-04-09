@@ -1,0 +1,60 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    tools:context=".view.activities.MainActivity"
+    android:orientation="vertical"
+    android:gravity="center">
+
+    <Button
+        android:id="@+id/staticBtn"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="Static fragment"
+        android:layout_marginBottom="24dp"/>
+
+    <Button
+        android:id="@+id/addFragmentBtn"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="Add Fragment"
+        android:layout_marginBottom="24dp"/>
+
+    <Button
+        android:id="@+id/replaceFragmentBtn"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="Replace Fragment"
+        android:layout_marginBottom="24dp"/>
+
+    <Button
+        android:id="@+id/fragmentInFragmentBtn"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="Fragment inside fragment"
+        android:layout_marginBottom="24dp"/>
+
+    <Button
+        android:id="@+id/fragmentCommunicationBtn"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="Fragment communication"
+        android:layout_marginBottom="24dp"/>
+
+    <Button
+        android:id="@+id/tabsBtn"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="Tabs"
+        android:layout_marginBottom="24dp"/>
+
+    <Button
+        android:id="@+id/bottomBarBtn"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="Bottom navigation"
+        android:layout_marginBottom="24dp"/>
+
+</LinearLayout>

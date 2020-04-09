@@ -1,0 +1,29 @@
+<?xml version="1.0" encoding="utf-8"?>
+<manifest xmlns:android="http://schemas.android.com/apk/res/android"
+    package="rs.raf.vezbe7">
+
+    <application
+        android:name=".application.Vezbe7Application"
+        android:allowBackup="true"
+        android:icon="@mipmap/ic_launcher"
+        android:label="@string/app_name"
+        android:roundIcon="@mipmap/ic_launcher_round"
+        android:supportsRtl="true"
+        android:theme="@style/AppTheme">
+        <activity android:name=".view.activities.BottomNavigationActivity"></activity>
+        <activity android:name=".view.activities.TabsActivity" />
+        <activity android:name=".view.activities.AddFragmentActivity" />
+        <activity android:name=".view.activities.MainActivity">
+            <intent-filter>
+                <action android:name="android.intent.action.MAIN" />
+
+                <category android:name="android.intent.category.LAUNCHER" />
+            </intent-filter>
+        </activity>
+        <activity android:name=".view.activities.StaticFragmentActivity" />
+        <activity android:name=".view.activities.ReplaceFragmentActivity" />
+        <activity android:name=".view.activities.FragmentInFragmentActivity" />
+        <activity android:name=".view.activities.FragmentCommunicationActivity" />
+    </application>
+
+</manifest>
