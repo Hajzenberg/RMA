@@ -35,7 +35,7 @@ class BottomNavigationActivity : AppCompatActivity(R.layout.activity_bottom_navi
                     viewPager.setCurrentItem(PagerAdapter.FRAGMENT_3, false)
                 }
             }
-            return@setOnNavigationItemSelectedListener true
+            true
         }
     }
 }
