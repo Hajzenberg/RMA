@@ -13,7 +13,14 @@ class CarViewHolder(
     onItemClicked: (Int) -> Unit) : RecyclerView.ViewHolder(containerView), LayoutContainer {
 
     init {
-        containerView.setOnClickListener {
+        // Kada dodamo click listener na containerView to znaci da ce biti registrovan klik
+        // na bilo koji deo itema u listi
+//        containerView.setOnClickListener {
+//            onItemClicked.invoke(adapterPosition)
+//        }
+        // Kada hocemo da registrujemo klik samo na odredjenoj komponenti u itemu,
+        // dodajemo click listener bas na tu komponentu
+        carPictureIv.setOnClickListener {
             onItemClicked.invoke(adapterPosition)
         }
     }

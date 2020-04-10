@@ -1,5 +1,6 @@
 package rs.raf.vezbe6.view.activity
 
+import android.content.Intent
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import android.widget.Toast
@@ -50,7 +51,11 @@ class RecyclerActivity : AppCompatActivity(R.layout.activity_classic_recycler) {
     private fun initRecycler() {
         listRv.layoutManager = LinearLayoutManager(this)
         carAdapter = CarAdapter(CarDiffItemCallback()) {
-            Toast.makeText(this, it.toString(), Toast.LENGTH_SHORT).show()
+            //Toast.makeText(this, it.toString(), Toast.LENGTH_SHORT).show()
+            // Ako hocemo da otvorimo novi activity klikom na item u listi
+            // to radimo ovde, ne prosledjujemo context u listadapter ili viewholder
+            val intent = Intent(this, StyledActivity::class.java)
+            startActivity(intent)
         }
         listRv.adapter = carAdapter
     }
