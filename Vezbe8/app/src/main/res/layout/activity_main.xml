@@ -1,0 +1,28 @@
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:orientation="vertical"
+    android:gravity="center" >
+
+    <Button
+        android:id="@+id/repositoryBtn"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="Repository"
+        android:layout_marginBottom="56dp"/>
+
+    <Button
+        android:id="@+id/threadingBtn"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="Threading"
+        android:layout_marginBottom="56dp"/>
+
+    <Button
+        android:id="@+id/rxRepositoryBtn"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="Repository RX"
+        android:layout_marginBottom="56dp"/>
+
+</LinearLayout>
