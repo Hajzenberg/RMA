@@ -1,7 +1,7 @@
 package rs.raf.vezbe8.data.entities
 
-sealed class Result<out T> {
-    class Loading<out T>(): Result<T>()
-    data class Success<out T>(val data: T): Result<T>()
-    class Error<out T>(val message: String): Result<T>()
+sealed class Resource<out T> {
+    class Loading<out T>(): Resource<T>()
+    data class Success<out T>(val data: T): Resource<T>()
+    class Error<out T>(val message: String): Resource<T>()
 }
