@@ -41,7 +41,7 @@ fun createRetrofit(moshi: Moshi,
 
 
     return Retrofit.Builder()
-        .baseUrl("http://dummy.restapiexample.com/api/v1")
+        .baseUrl("http://dummy.restapiexample.com/api/v1/")
         .addCallAdapterFactory(RxJava2CallAdapterFactory.create())
         .addConverterFactory(MoshiConverterFactory.create(moshi).asLenient())
         .client(httpClient)
@@ -63,6 +63,7 @@ fun createOkHttpClient(): OkHttpClient {
     return httpClient.build()
 }
 
+// Metoda koja kreira servis
 inline fun <reified T> create(retrofit: Retrofit): T  {
     return retrofit.create<T>(T::class.java)
 }
