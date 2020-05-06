@@ -41,7 +41,7 @@ fun createRetrofit(moshi: Moshi,
 
 
     return Retrofit.Builder()
-        .baseUrl("serverUrl")
+        .baseUrl("http://dummy.restapiexample.com/api/v1")
         .addCallAdapterFactory(RxJava2CallAdapterFactory.create())
         .addConverterFactory(MoshiConverterFactory.create(moshi).asLenient())
         .client(httpClient)
