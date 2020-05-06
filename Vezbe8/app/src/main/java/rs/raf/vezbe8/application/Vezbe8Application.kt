@@ -8,6 +8,7 @@ import org.koin.androidx.fragment.koin.fragmentFactory
 import org.koin.core.context.startKoin
 import org.koin.core.logger.Level
 import rs.raf.vezbe8.modules.coreModule
+import rs.raf.vezbe8.modules.rxUserModule
 import rs.raf.vezbe8.modules.threadingModule
 import rs.raf.vezbe8.modules.userModule
 import timber.log.Timber
@@ -32,6 +33,7 @@ class Vezbe8Application : Application() {
         val modules = listOf(
             coreModule,
             userModule,
+            rxUserModule,
             threadingModule
         )
         startKoin {

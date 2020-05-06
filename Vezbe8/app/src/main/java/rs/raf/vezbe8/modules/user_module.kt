@@ -2,6 +2,7 @@ package rs.raf.vezbe8.modules
 
 import org.koin.android.ext.koin.androidApplication
 import org.koin.androidx.viewmodel.dsl.viewModel
+import org.koin.core.qualifier.named
 import org.koin.dsl.module
 import rs.raf.vezbe8.data.datasources.JsonUserDataSource
 import rs.raf.vezbe8.data.datasources.SharedPreferenceUserDataSource
@@ -14,10 +15,10 @@ val userModule = module {
 
     viewModel { UserViewModel(userRepository = get()) }
 
-    single<UserRepository> { UserRepositoryImpl(userDataSource = get()) }
+    single<UserRepository> { UserRepositoryImpl(userDataSource = get(named("json"))) }
 
-    single<UserDataSource> { SharedPreferenceUserDataSource(sharedPreferences = get()) }
+    single<UserDataSource>(named("shared")) { SharedPreferenceUserDataSource(sharedPreferences = get()) }
 
-    //single<UserDataSource> { JsonUserDataSource(context = androidApplication(), moshi = get()) }
+    single<UserDataSource>(named("json")) { JsonUserDataSource(context = androidApplication(), moshi = get()) }
 
 }

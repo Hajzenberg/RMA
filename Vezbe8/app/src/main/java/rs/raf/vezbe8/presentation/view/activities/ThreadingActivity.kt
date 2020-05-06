@@ -5,6 +5,7 @@ import androidx.appcompat.app.AppCompatActivity
 import androidx.lifecycle.Observer
 import io.reactivex.Observable
 import io.reactivex.android.schedulers.AndroidSchedulers
+import io.reactivex.disposables.CompositeDisposable
 import io.reactivex.schedulers.Schedulers
 import kotlinx.android.synthetic.main.activity_threading.*
 import org.koin.androidx.viewmodel.ext.android.viewModel
@@ -16,6 +17,8 @@ import timber.log.Timber
 class ThreadingActivity : AppCompatActivity(R.layout.activity_threading) {
 
     private val threadViewModel: ThreadContract.ViewModel by viewModel<ThreadViewModel>()
+
+    private val subscriptions = CompositeDisposable()
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
@@ -35,11 +38,12 @@ class ThreadingActivity : AppCompatActivity(R.layout.activity_threading) {
 
     private fun initUi() {
         startBtn.setOnClickListener {
-            //loopWithoutThreads()
+            loopWithoutThreads()
             //startThreads()
             //updateTextViewFromBackgroundThread()
             //updateTextViewFromBackgroundThread2()
             //updateLiveDataFromBackgroundThread()
+            //infinite()
             //rxSimple()
             //rxFromCallable()
             //rxEmitter()
@@ -101,8 +105,18 @@ class ThreadingActivity : AppCompatActivity(R.layout.activity_threading) {
         ).start()
     }
 
+    private fun infinite() {
+        Thread(
+            Runnable {
+                while (true){
+                    Timber.e("Thread ${Thread.currentThread().name}")
+                }
+            }
+        ).start()
+    }
+
     private fun rxSimple() {
-        Observable
+        val subscription = Observable
             .just("Hello")
             .subscribeOn(Schedulers.io())
             .observeOn(AndroidSchedulers.mainThread())
@@ -117,10 +131,11 @@ class ThreadingActivity : AppCompatActivity(R.layout.activity_threading) {
                     Timber.e("Complete")
                 }
             )
+        subscriptions.add(subscription)
     }
 
     private fun rxFromCallable() {
-        Observable
+        val subscription =  Observable
             .fromCallable {
                 Timber.e("From callable")
                 "Hello from callable"
@@ -138,16 +153,18 @@ class ThreadingActivity : AppCompatActivity(R.layout.activity_threading) {
                     Timber.e("Complete")
                 }
             )
+        subscriptions.add(subscription)
     }
 
     private fun rxEmitter() {
-        Observable
+        val subscription = Observable
             .create<String> {
                 it.onNext("From emitter")
                 it.onNext("Another message from emitter")
-                //it.onError(Throwable("Error happened in emitter"))
+                it.onError(Throwable("Error happened in emitter"))
                 it.onComplete()
-            }.subscribeOn(Schedulers.io())
+            }
+            .subscribeOn(Schedulers.io())
             .observeOn(AndroidSchedulers.mainThread())
             .subscribe(
                 {
@@ -161,6 +178,12 @@ class ThreadingActivity : AppCompatActivity(R.layout.activity_threading) {
                     Timber.e("Complete")
                 }
             )
+        subscriptions.add(subscription)
+    }
+
+    override fun onDestroy() {
+        subscriptions.dispose()
+        super.onDestroy()
     }
 
 }

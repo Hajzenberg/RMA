@@ -27,7 +27,8 @@ class MainActivity : AppCompatActivity(R.layout.activity_main) {
             startActivity(intent)
         }
         rxRepositoryBtn.setOnClickListener {
-
+            val intent = Intent(this, RxUserActivity::class.java)
+            startActivity(intent)
         }
     }
 }

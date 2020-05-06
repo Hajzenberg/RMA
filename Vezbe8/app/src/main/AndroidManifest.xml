@@ -19,6 +19,7 @@
         </activity>
         <activity android:name=".presentation.view.activities.UserActivity" />
         <activity android:name=".presentation.view.activities.ThreadingActivity" />
+        <activity android:name=".presentation.view.activities.RxUserActivity" />
     </application>
 
 </manifest>
