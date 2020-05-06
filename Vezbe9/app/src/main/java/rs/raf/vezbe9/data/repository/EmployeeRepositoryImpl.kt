@@ -21,4 +21,18 @@ class EmployeeRepositoryImpl(private val employeeDataSource: EmployeeDataSource)
             }
     }
 
+    override fun getEmployee(id: String): Observable<Employee> {
+        return employeeDataSource
+            .getEmployee(id)
+            .map {
+                val employeeResponse = it.data
+                Employee(
+                    employeeResponse.id,
+                    employeeResponse.name,
+                    employeeResponse.salary,
+                    employeeResponse.age
+                )
+            }
+    }
+
 }

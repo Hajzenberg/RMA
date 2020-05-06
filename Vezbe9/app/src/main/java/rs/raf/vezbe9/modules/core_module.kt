@@ -2,6 +2,7 @@ package rs.raf.vezbe9.modules
 
 import android.content.Context
 import android.content.SharedPreferences
+import com.facebook.stetho.okhttp3.StethoInterceptor
 import com.squareup.moshi.Moshi
 import com.squareup.moshi.adapters.Rfc3339DateJsonAdapter
 import okhttp3.OkHttpClient
@@ -58,6 +59,7 @@ fun createOkHttpClient(): OkHttpClient {
         val logging = HttpLoggingInterceptor()
         logging.level = HttpLoggingInterceptor.Level.BODY
         httpClient.addInterceptor(logging)
+        httpClient.addNetworkInterceptor(StethoInterceptor())
     }
 
     return httpClient.build()

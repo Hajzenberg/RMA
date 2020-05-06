@@ -7,4 +7,6 @@ interface EmployeeRepository {
 
     fun getEmployees(): Observable<List<Employee>>
 
+    fun getEmployee(id: String): Observable<Employee>
+
 }

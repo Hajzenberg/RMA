@@ -1,6 +1,7 @@
 package rs.raf.vezbe9.application
 
 import android.app.Application
+import com.facebook.stetho.Stetho
 import org.koin.android.ext.koin.androidContext
 import org.koin.android.ext.koin.androidFileProperties
 import org.koin.android.ext.koin.androidLogger
@@ -21,6 +22,7 @@ class Vezbe9Application : Application() {
     private fun init() {
         initTimber()
         initKoin()
+        initStetho()
     }
 
     private fun initTimber() {
@@ -45,4 +47,7 @@ class Vezbe9Application : Application() {
         }
     }
 
+    private fun initStetho() {
+        Stetho.initializeWithDefaults(this)
+    }
 }

@@ -7,8 +7,10 @@ interface MainContract {
 
     interface ViewModel {
         val employees: LiveData<List<Employee>>
+        val employee: LiveData<Employee>
 
         fun getEmployees()
+        fun getEmployee(id: String)
     }
 
 }

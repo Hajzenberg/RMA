@@ -16,6 +16,7 @@ class MainViewModel(
 ) : ViewModel(), MainContract.ViewModel {
 
     override val employees: MutableLiveData<List<Employee>> = MutableLiveData()
+    override val employee: MutableLiveData<Employee> = MutableLiveData()
 
     private val subscriptions = CompositeDisposable()
 
@@ -32,6 +33,22 @@ class MainViewModel(
                    Timber.e(it)
                }
            )
+        subscriptions.add(subscription)
+    }
+
+    override fun getEmployee(id: String) {
+        val subscription = employeeRepository
+            .getEmployee(id)
+            .subscribeOn(Schedulers.io())
+            .observeOn(AndroidSchedulers.mainThread())
+            .subscribe(
+                {
+                    employee.value = it
+                },
+                {
+                    Timber.e(it)
+                }
+            )
         subscriptions.add(subscription)
     }
 
