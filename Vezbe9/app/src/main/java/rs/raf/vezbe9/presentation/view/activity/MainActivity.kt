@@ -29,9 +29,9 @@ class MainActivity : AppCompatActivity(R.layout.activity_main) {
             // Kada dobijemo listu svih korisnika sa servera, hocemo da dohvatimo posebno
             // podatke o prvom zaposlenom
             /* API NE RADI !!! */
-            // mainViewModel.getEmployee(it[0].id)
+            mainViewModel.getEmployee(it[0].id)
         })
-        mainViewModel.getEmployees()
+        //mainViewModel.getEmployees()
 
         /* DOHVATANJE JENDOG ZAPOSLENOG NA OSNOVU ID-A */
         mainViewModel.employee.observe(this, Observer {
@@ -42,19 +42,20 @@ class MainActivity : AppCompatActivity(R.layout.activity_main) {
         mainViewModel.employeeAdded.observe(this, Observer {
             Timber.e("Added employee $it")
         })
-        //mainViewModel.addEmployee("draza", "666999", "35")
+        // mainViewModel.addEmployee("draza", "666999", "35")
 
         /* MENJANJE PODATAKA ZAPOSLENOG */
         mainViewModel.employeeUpdated.observe(this, Observer {
             Timber.e("Updated employee $it")
         })
-        //mainViewModel.updateEmployee("92", "mika", "1", "33")
+        // mainViewModel.updateEmployee("35", "mika", "1", "33")
 
         /* BRISANJE ZAPOSLENOG */
         mainViewModel.employeeDeleted.observe(this, Observer {
             Timber.e("Employee deleted $it")
         })
-        //mainViewModel.delete("92")
+        /* API NE RADI !!! */
+        mainViewModel.delete("35")
 
     }
 }

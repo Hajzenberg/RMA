@@ -19,7 +19,8 @@ interface EmployeeDataSource {
     @PUT("update/{id}")
     fun update(@Path("id") id: String, @Body body: EmployeeRequestBody): Observable<UpdateEmployeeResponse>
 
+    /* API NE RADI !!! */
     @DELETE("delete/{id}")
-    fun delete(): Observable<UpdateEmployeeResponse>
+    fun delete(@Path("id") id: String): Observable<UpdateEmployeeResponse>
 
 }

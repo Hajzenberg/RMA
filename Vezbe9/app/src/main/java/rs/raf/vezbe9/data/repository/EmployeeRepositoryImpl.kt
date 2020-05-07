@@ -62,7 +62,7 @@ class EmployeeRepositoryImpl(private val employeeDataSource: EmployeeDataSource)
 
     override fun delete(id: String): Observable<String> {
         return employeeDataSource
-            .delete()
+            .delete(id)
             .map {
                 it.status
             }
