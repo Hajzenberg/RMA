@@ -2,13 +2,14 @@ package rs.raf.vezbe9.data.repository
 
 import io.reactivex.Observable
 import rs.raf.vezbe9.data.datasources.EmployeeDataSource
+import rs.raf.vezbe9.data.models.api.EmployeeRequestBody
 import rs.raf.vezbe9.data.models.domain.Employee
 
 class EmployeeRepositoryImpl(private val employeeDataSource: EmployeeDataSource) : EmployeeRepository {
 
     override fun getEmployees(): Observable<List<Employee>> {
         return employeeDataSource
-            .getEmployees()
+            .getAll()
             .map {
                 it.data.map {
                     Employee(
@@ -23,7 +24,7 @@ class EmployeeRepositoryImpl(private val employeeDataSource: EmployeeDataSource)
 
     override fun getEmployee(id: String): Observable<Employee> {
         return employeeDataSource
-            .getEmployee(id)
+            .getById(id)
             .map {
                 val employeeResponse = it.data
                 Employee(
@@ -32,6 +33,38 @@ class EmployeeRepositoryImpl(private val employeeDataSource: EmployeeDataSource)
                     employeeResponse.salary,
                     employeeResponse.age
                 )
+            }
+    }
+
+    override fun addEmployee(name: String, salary: String, age: String): Observable<Employee> {
+        val body = EmployeeRequestBody(name, salary, age)
+        return employeeDataSource
+            .add(body)
+            .map {
+                val shortEmployeeResponse = it.data!!
+                Employee(
+                    shortEmployeeResponse.id,
+                    shortEmployeeResponse.name,
+                    shortEmployeeResponse.salary,
+                    shortEmployeeResponse.age
+                )
+            }
+    }
+
+    override fun updateEmployee(id: String, name: String?, salary: String?, age: String?): Observable<String> {
+        val body = EmployeeRequestBody(name, salary, age)
+        return employeeDataSource
+            .update(id, body)
+            .map {
+                it.status
+            }
+    }
+
+    override fun delete(id: String): Observable<String> {
+        return employeeDataSource
+            .delete()
+            .map {
+                it.status
             }
     }
 

@@ -9,4 +9,10 @@ interface EmployeeRepository {
 
     fun getEmployee(id: String): Observable<Employee>
 
+    fun addEmployee(name: String, salary: String, age: String): Observable<Employee>
+
+    fun updateEmployee(id: String, name: String?, salary: String?, age: String?): Observable<String>
+
+    fun delete(id: String): Observable<String>
+
 }
