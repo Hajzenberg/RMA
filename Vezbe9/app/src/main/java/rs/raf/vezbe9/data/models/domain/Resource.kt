@@ -1,4 +1,4 @@
-package rs.raf.vezbe8.data.entities
+package rs.raf.vezbe9.data.models.domain
 
 sealed class Resource<out T> {
     class Loading<out T>(): Resource<T>()
