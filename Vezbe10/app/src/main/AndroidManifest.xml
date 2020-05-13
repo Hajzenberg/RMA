@@ -3,6 +3,7 @@
     package="rs.raf.vezbe10">
 
     <application
+        android:name=".application.Vezbe10Application"
         android:allowBackup="true"
         android:icon="@mipmap/ic_launcher"
         android:label="@string/app_name"
