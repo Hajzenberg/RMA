@@ -9,6 +9,7 @@ import org.koin.androidx.fragment.koin.fragmentFactory
 import org.koin.core.context.startKoin
 import org.koin.core.logger.Level
 import rs.raf.vezbe10.modules.coreModule
+import rs.raf.vezbe10.modules.courseModule
 import rs.raf.vezbe10.modules.studentModule
 import timber.log.Timber
 
@@ -32,7 +33,8 @@ class Vezbe10Application : Application() {
     private fun initKoin() {
         val modules = listOf(
             coreModule,
-            studentModule
+            studentModule,
+            courseModule
         )
         startKoin {
             androidLogger(Level.DEBUG)

@@ -9,7 +9,7 @@ import rs.raf.vezbe10.presentation.viewmodels.MainViewModel
 
 val studentModule = module {
 
-    viewModel { MainViewModel(get()) }
+    viewModel { MainViewModel(get(), get()) }
 
     single<StudentRepository> { StudentRepositoryImpl(get()) }
 
