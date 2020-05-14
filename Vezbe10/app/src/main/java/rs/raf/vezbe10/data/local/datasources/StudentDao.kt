@@ -60,4 +60,7 @@ abstract class StudentDao {
     @Transaction //Kada vracamo objekte koji su u relaciji, preporuceno je da anotiramo metodu sa @Transaction
     @Query("SELECT * FROM students")
     abstract fun getAllWIthClasses(): Observable<List<StudentWithClasses>>
+
+    @Query("SELECT * FROM students WHERE name LIKE :name || '%'")
+    abstract fun getByName(name: String): Observable<List<StudentEntity>>
 }

@@ -12,7 +12,7 @@ import rs.raf.vezbe10.data.local.models.StudentEntity
 
 @Database(
     entities = [StudentEntity::class, CourseEntity::class],
-    version = 3,
+    version = 1,
     exportSchema = false)
 @TypeConverters(StringListConverter::class, DateConverter::class)
 abstract class StudentDatabase : RoomDatabase() {
