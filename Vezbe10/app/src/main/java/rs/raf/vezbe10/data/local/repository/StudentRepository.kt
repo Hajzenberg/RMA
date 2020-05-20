@@ -5,7 +5,7 @@ import io.reactivex.Observable
 import io.reactivex.Single
 import rs.raf.vezbe10.data.local.models.StudentEntity
 import rs.raf.vezbe10.data.local.models.StudentNameAndCity
-import rs.raf.vezbe10.data.local.models.StudentWithClasses
+import rs.raf.vezbe10.data.local.models.StudentWithCourses
 
 interface StudentRepository {
 
@@ -23,6 +23,6 @@ interface StudentRepository {
 
     fun getAllWithNameAndCityOnly(): Observable<List<StudentNameAndCity>>
 
-    fun getAllWithClasses(): Observable<List<StudentWithClasses>>
+    fun getAllWithClasses(): Observable<List<StudentWithCourses>>
 
 }

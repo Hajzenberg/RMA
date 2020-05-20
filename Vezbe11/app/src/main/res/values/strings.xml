@@ -1,0 +1,7 @@
+<resources>
+    <string name="app_name">Vezbe11</string>
+    <string name="movies">Movies</string>
+    <string name="input">Input</string>
+    <string name="search">Search</string>
+    <string name="add">Add</string>
+</resources>

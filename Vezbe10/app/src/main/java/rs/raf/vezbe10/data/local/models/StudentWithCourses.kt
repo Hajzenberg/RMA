@@ -3,7 +3,7 @@ package rs.raf.vezbe10.data.local.models
 import androidx.room.Embedded
 import androidx.room.Relation
 
-data class StudentWithClasses(
+data class StudentWithCourses(
     @Embedded val studentEntity: StudentEntity,
     @Relation(
         parentColumn = "id",

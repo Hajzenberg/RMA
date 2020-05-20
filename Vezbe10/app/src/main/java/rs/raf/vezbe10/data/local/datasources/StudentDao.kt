@@ -6,7 +6,7 @@ import io.reactivex.Observable
 import io.reactivex.Single
 import rs.raf.vezbe10.data.local.models.StudentEntity
 import rs.raf.vezbe10.data.local.models.StudentNameAndCity
-import rs.raf.vezbe10.data.local.models.StudentWithClasses
+import rs.raf.vezbe10.data.local.models.StudentWithCourses
 
 @Dao
 abstract class StudentDao {
@@ -59,7 +59,7 @@ abstract class StudentDao {
 
     @Transaction //Kada vracamo objekte koji su u relaciji, preporuceno je da anotiramo metodu sa @Transaction
     @Query("SELECT * FROM students")
-    abstract fun getAllWIthClasses(): Observable<List<StudentWithClasses>>
+    abstract fun getAllWIthCourses(): Observable<List<StudentWithCourses>>
 
     @Query("SELECT * FROM students WHERE name LIKE :name || '%'")
     abstract fun getByName(name: String): Observable<List<StudentEntity>>

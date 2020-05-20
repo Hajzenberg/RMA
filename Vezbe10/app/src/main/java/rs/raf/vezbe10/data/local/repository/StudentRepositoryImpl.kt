@@ -6,7 +6,7 @@ import io.reactivex.Single
 import rs.raf.vezbe10.data.local.datasources.StudentDao
 import rs.raf.vezbe10.data.local.models.StudentEntity
 import rs.raf.vezbe10.data.local.models.StudentNameAndCity
-import rs.raf.vezbe10.data.local.models.StudentWithClasses
+import rs.raf.vezbe10.data.local.models.StudentWithCourses
 
 class StudentRepositoryImpl(private val studentDao: StudentDao): StudentRepository {
 
@@ -44,8 +44,8 @@ class StudentRepositoryImpl(private val studentDao: StudentDao): StudentReposito
         return studentDao.getAllWithNameAndCityOnly()
     }
 
-    override fun getAllWithClasses(): Observable<List<StudentWithClasses>> {
-        return studentDao.getAllWIthClasses()
+    override fun getAllWithClasses(): Observable<List<StudentWithCourses>> {
+        return studentDao.getAllWIthCourses()
     }
 
     //@Embeded
