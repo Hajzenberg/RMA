@@ -10,6 +10,8 @@ import org.koin.androidx.viewmodel.ext.android.sharedViewModel
 import rs.raf.vezbe11.R
 import rs.raf.vezbe11.data.models.Movie
 import rs.raf.vezbe11.presentation.contract.MainContract
+import rs.raf.vezbe11.presentation.view.states.AddMovieState
+import rs.raf.vezbe11.presentation.view.states.MoviesState
 import rs.raf.vezbe11.presentation.viewmodel.MainViewModel
 
 class InputFragment : Fragment(R.layout.fragment_input) {
@@ -37,9 +39,15 @@ class InputFragment : Fragment(R.layout.fragment_input) {
 
     private fun initObservers() {
         mainViewModel.addDone.observe(viewLifecycleOwner, Observer {
-            val message = if (it) "Movie added" else "Error happened"
-            Toast.makeText(context, message, Toast.LENGTH_SHORT).show()
+            renderState(it)
         })
+    }
+
+    private fun renderState(state: AddMovieState) {
+        when(state) {
+            is AddMovieState.Success -> Toast.makeText(context, "Movie added", Toast.LENGTH_SHORT).show()
+            is AddMovieState.Error -> Toast.makeText(context, "Error happened", Toast.LENGTH_SHORT).show()
+        }
     }
 
 }

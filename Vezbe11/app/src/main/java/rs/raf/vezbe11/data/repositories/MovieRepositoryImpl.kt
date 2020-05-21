@@ -6,6 +6,7 @@ import rs.raf.vezbe11.data.datasources.local.MovieDao
 import rs.raf.vezbe11.data.datasources.remote.MovieService
 import rs.raf.vezbe11.data.models.Movie
 import rs.raf.vezbe11.data.models.MovieEntity
+import rs.raf.vezbe11.data.models.Resource
 import timber.log.Timber
 
 class MovieRepositoryImpl(
@@ -13,7 +14,7 @@ class MovieRepositoryImpl(
     private val remoteDataSource: MovieService
 ) : MovieRepository {
 
-    override fun fetchAll(): Observable<Unit> {
+    override fun fetchAll(): Observable<Resource<Unit>> {
         return remoteDataSource
             .getAll()
             .doOnNext {
@@ -28,8 +29,7 @@ class MovieRepositoryImpl(
                 localDataSource.deleteAndInsertAll(entities)
             }
             .map {
-                Timber.e(it.toString())
-                Unit
+                Resource.Success(Unit)
             }
         // Kada zelimo sami da kontrolisemo sta se desava sa greskom, umesto da je samo prepustimo
         // error handleru, mozemo iskoristiti operator onErrorReturn, tada sami na osnovu greske
