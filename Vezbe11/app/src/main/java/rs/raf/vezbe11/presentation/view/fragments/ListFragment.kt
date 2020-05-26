@@ -54,6 +54,7 @@ class ListFragment : Fragment(R.layout.fragment_list) {
 
     private fun initObservers() {
         mainViewModel.moviesState.observe(viewLifecycleOwner, Observer {
+            Timber.e(it.toString())
             renderState(it)
         })
         // Pravimo subscription kad observablu koji je vezan za getAll iz baze
@@ -78,7 +79,7 @@ class ListFragment : Fragment(R.layout.fragment_list) {
             }
             is MoviesState.DataFetched -> {
                 showLoadingState(false)
-                Toast.makeText(context, "Fresh data fetched from the server", Toast.LENGTH_SHORT).show()
+                Toast.makeText(context, "Fresh data fetched from the server", Toast.LENGTH_LONG).show()
             }
             is MoviesState.Loading -> {
                 showLoadingState(true)

@@ -26,7 +26,7 @@ class MainViewModel(
     private val publishSubject: PublishSubject<String> = PublishSubject.create()
 
     init {
-        val contactsDisposable = publishSubject
+        val subscription = publishSubject
             .debounce(200, TimeUnit.MILLISECONDS)
             .distinctUntilChanged()
             .switchMap {
@@ -48,7 +48,7 @@ class MainViewModel(
                     Timber.e(it)
                 }
             )
-        subscriptions.add(contactsDisposable)
+        subscriptions.add(subscription)
     }
 
     override fun fetchAllMovies() {
