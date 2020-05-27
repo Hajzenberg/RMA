@@ -7,12 +7,33 @@
     android:orientation="vertical">
 
     <rs.raf.vezbe12.presentation.view.custom.SquareView
+        android:id="@+id/squareView"
         android:layout_width="200dp"
         android:layout_height="200dp"
-        app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintStart_toStartOf="parent"
+        android:layout_marginTop="32dp"
         app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent" />
+
+    <EditText
+        android:id="@+id/inputBarEt"
+        android:layout_width="64dp"
+        android:layout_height="wrap_content"
+        android:inputType="number"
+        android:maxLength="3"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/squareView"
         android:layout_marginTop="32dp"/>
+
+    <Button
+        android:id="@+id/applyBarHeightBtn"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="Apply bar height"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/inputBarEt" />
 
     <rs.raf.vezbe12.presentation.view.custom.PercentageTextView
         android:id="@+id/percentagePtv"
@@ -24,13 +45,13 @@
         app:backgroundCircleColor="@color/blue"
         app:foregroundCircleColor="@color/red"
         app:circleStrokeWidth="4dp"
-        app:layout_constraintBottom_toTopOf="@id/inputEt"
+        app:layout_constraintBottom_toTopOf="@id/inputPercentageEt"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         android:layout_marginBottom="32dp"/>
 
     <EditText
-        android:id="@+id/inputEt"
+        android:id="@+id/inputPercentageEt"
         android:layout_width="64dp"
         android:layout_height="wrap_content"
         android:inputType="number"
@@ -44,7 +65,7 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginTop="16dp"
-        android:text="Apply"
+        android:text="Apply percentage"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintEnd_toEndOf="parent"

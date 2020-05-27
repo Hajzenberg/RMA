@@ -17,8 +17,13 @@ class MainActivity : AppCompatActivity(R.layout.activity_main) {
     }
 
     private fun initUi() {
+        applyBarHeightBtn.setOnClickListener {
+            val heightDivider = inputBarEt.text.toString()
+            squareView.heightDivider = Integer.parseInt(heightDivider)
+            squareView.invalidate() // We manually request view redraw
+        }
         applyPercentageBtn.setOnClickListener {
-            val percentage = inputEt.text.toString()
+            val percentage = inputPercentageEt.text.toString()
             percentagePtv.text = percentage // This implicitly calls invalidate on textView
         }
     }
