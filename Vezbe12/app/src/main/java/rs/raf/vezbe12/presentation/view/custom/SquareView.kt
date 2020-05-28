@@ -21,6 +21,19 @@ class SquareView : View {
 
     private var rect: Rect = Rect()
     private var paint: Paint = Paint()
+    private val redStrokePaint: Paint = Paint().also {
+        it.isAntiAlias = true
+        it.color = ContextCompat.getColor(context, R.color.red)
+        it.style = Paint.Style.STROKE
+        it.strokeWidth = 4.toPx().toFloat()
+    }
+    private val blueFillPaint: Paint = Paint().also {
+        it.isAntiAlias = true
+        it.color = ContextCompat.getColor(context, R.color.blue)
+        it.style = Paint.Style.FILL
+    }
+
+    var heightDivider = 1
 
     override fun onMeasure(widthMeasureSpec: Int, heightMeasureSpec: Int) {
         super.onMeasure(widthMeasureSpec, heightMeasureSpec)
@@ -36,26 +49,27 @@ class SquareView : View {
         super.onDraw(canvas)
         Timber.e("On draw")
 
+        // Set dimensions of the first shape to be drawn
         val left = 0
         val top = 0
-        val bottom = height
-        val right = width
-
-        // Set dimensions of a shape to be drawn
+        val bottom = height / heightDivider
+        val right = width / 2
         rect.set(left, top, right, bottom)
+        //Draw it with blue paint (fill)
+        canvas?.drawRect(rect, blueFillPaint)
+        //Draw it with red paint (only stroke)
+        canvas?.drawRect(rect, redStrokePaint)
 
-        // Set color of a shape
-        paint.isAntiAlias = true
-        paint.style = Paint.Style.FILL
-        paint.color = ContextCompat.getColor(context, R.color.blue)
-        paint.strokeWidth = 4.toPx().toFloat()
-
-        canvas?.drawRect(rect, paint)
-
-        paint.color = ContextCompat.getColor(context, R.color.red)
-        paint.style = Paint.Style.STROKE
-
-        canvas?.drawRect(rect, paint)
+        // Set dimensions of the second shape to be drawn
+        val left2 = right
+        val top2 = top
+        val bottom2 = bottom
+        val right2 = width
+        rect.set(left2, top2, right2, bottom2)
+        //Draw it with blue paint (fill)
+        canvas?.drawRect(rect, blueFillPaint)
+        //Draw it with red paint (only stroke)
+        canvas?.drawRect(rect, redStrokePaint)
 
     }
 }
