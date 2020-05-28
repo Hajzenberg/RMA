@@ -70,6 +70,5 @@ class SquareView : View {
         canvas?.drawRect(rect, blueFillPaint)
         //Draw it with red paint (only stroke)
         canvas?.drawRect(rect, redStrokePaint)
-
     }
 }
